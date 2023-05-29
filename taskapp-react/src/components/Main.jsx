@@ -7,16 +7,15 @@ const Main = () => {
   const [data, setData] = useState(mocData);
 
   const onDragEnd = (result) => {
-    // console.log(result);
     if (!result.destination) return;
     const { source, destination } = result;
 
-    //動かし始めたcolumnが違うcolumnに移動したら
+    // 動かし始めたcolumnが違うcolumnに移動したら
     if (source.droppableId !== destination.droppableId) {
-      //動かし始めたcolumnの配列の番号を取得()
+      // 動かし始めたcolumnの配列の番号を取得()
       const sourceColIndex = data.findIndex((e) => e.id === source.droppableId);
       console.log(sourceColIndex);
-      //動かし終わったcolumnの配列の番号を取得()
+      // 動かし終わったcolumnの配列の番号を取得()
       const destinationColIndex = data.findIndex(
         (e) => e.id === destination.droppableId
       );
@@ -25,20 +24,17 @@ const Main = () => {
       const sourseCol = data[sourceColIndex];
       const destinationCol = data[destinationColIndex];
 
-      //動かし始めたタスクに属していたカラムの中のタスクを全て取得
-      //後でsplice関数でその動かし始めたタスクを削除するため
-      //sourceTaskに配列をコピーしておく(破壊操作を後でするため)
+      // sourceTaskに配列をコピーしておく(破壊操作を後でするため)
       const sourceTask = [...sourseCol.tasks];
       console.log(sourceTask);
 
-      //動かし終わったタスクに属していたカラムの中のタスクを全て取得
-      //後でsplice関数でその動かし始めたタスクを追加するため
+      // 動かし終わったタスクに属していたカラムの中のタスクを全て取得
       const destinationTask = [...destinationCol.tasks];
       console.log(destinationTask);
 
-      //前のカラムから削除
+      // 前のカラムから削除
       const [removed] = sourceTask.splice(source.index, 1);
-      //後のカラムに追加
+      // 後のカラムに追加
       destinationTask.splice(destination.index, 0, removed);
 
       data[sourceColIndex].tasks = sourceTask;
@@ -46,7 +42,7 @@ const Main = () => {
 
       setData(data);
     } else {
-      //同じカラム内でタスクの入れ替え。
+      // 同じカラム内でタスクの入れ替え
       const sourceColIndex = data.findIndex((e) => e.id === source.droppableId);
       const sourseCol = data[sourceColIndex];
       console.log(sourseCol);
