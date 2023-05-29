@@ -11,11 +11,11 @@ const mocData = [
       },
       {
         id: uuidv4(),
-        title: "Youtubeで勉強",
+        title: "Rambleの執筆",
       },
       {
         id: uuidv4(),
-        title: "散歩",
+        title: "筋トレ",
       },
     ],
   },
@@ -29,7 +29,7 @@ const mocData = [
       },
       {
         id: uuidv4(),
-        title: "転職活動",
+        title: "資格勉強",
       },
     ],
   },
@@ -39,7 +39,7 @@ const mocData = [
     tasks: [
       {
         id: uuidv4(),
-        title: "読書",
+        title: "ライブ",
       },
     ],
   },
